@@ -14,3 +14,5 @@ let isLoggedIn = false // boolean
 // null = standalone value 
 // undefined = define but value not assigned
 // symbol => unique
+
+
