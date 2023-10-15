@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Start changing the background.</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <script>
+        var bgcolor = ['red', 'green', 'blue', 'yellow', 'pink', 'purple'];
+        var currentIndex = 0;
+
+        let change_bg = (bgcolor) => {
+            document.body.style.backgroundColor = `${bgcolor}`;
+            if (!bgcolor[currentIndex]) {
+       currentIndex = 0;
+   } else {
+       currentIndex++;
+       console.log(currentIndex);
+   }
+        }
+        let start = document.querySelector('#start').addEventListener('click', () => {setInterval(change_bg, 1000, bgcolor[currentIndex]);})
+        let stop = document.querySelector('#stop').addEventListener('click', () => {clearInterval(start)})
+    </script>
+</body>
+</html>
