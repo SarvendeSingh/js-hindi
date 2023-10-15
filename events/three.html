@@ -10,20 +10,34 @@
     <button id="start">Start</button>
     <button id="stop">Stop</button>
     <script>
-        var bgcolor = ['red', 'green', 'blue', 'yellow', 'pink', 'purple'];
-        var currentIndex = 0;
+        let bgcolor = ['red', 'green', 'blue', 'yellow', 'pink', 'purple'];
+        let currentIndex = 0;
+        let start = document.querySelector('#start');
+        let stop = document.querySelector('#stop');
+        let interval  = null;
 
-        let change_bg = (bgcolor) => {
-            document.body.style.backgroundColor = `${bgcolor}`;
-            if (!bgcolor[currentIndex]) {
-       currentIndex = 0;
-   } else {
-       currentIndex++;
-       console.log(currentIndex);
-   }
-        }
-        let start = document.querySelector('#start').addEventListener('click', () => {setInterval(change_bg, 1000, bgcolor[currentIndex]);})
-        let stop = document.querySelector('#stop').addEventListener('click', () => {clearInterval(start)})
+        start.addEventListener('click', function() {
+            if(interval == null){
+                interval = setInterval( () => {
+                    document.body.style.backgroundColor = `${bgcolor[currentIndex]}`;
+                    if(currentIndex == bgcolor.length - 1){
+                        currentIndex = 0;
+                    }else{
+                        currentIndex++;
+                    }
+                }, 2000)
+            }
+        })
+
+        stop.addEventListener('click', function() {
+            if(interval !== null){
+                clearInterval(interval);
+                interval = null;
+            }
+        })
+
+
+
     </script>
 </body>
 </html>
